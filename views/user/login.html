@@ -1,0 +1,38 @@
+
+{{>header}}
+
+
+<body>
+
+
+    <form action="/login"  method="post">
+
+        <div>
+            <label>Nama</label>
+            <input name="email" placeholder="Masukin nama !" required="true"/>
+            <label>password</label>
+            <input name="password" placeholder="Masukin pass !" type="password" required="true"/>
+
+
+        </div>
+      <!--   <div>
+            <label>pass!</label>
+            <input name="password" placeholder="masukin password!" required="true" />
+
+        </div> -->
+        <button type="submit" name="button">coba</button>  
+    </form>
+
+    <a href="/dashboard">coba masuk tanpa izin!</a> <br>
+    <a href="/">halaman Depan!</a>
+    <a href="/daftar"> Daftar Baru! </a>
+
+
+
+    <h1> <%= makan %> </h1>
+
+
+</body>
+
+
+</html>

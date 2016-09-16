@@ -1,0 +1,93 @@
+body {
+  
+  padding-top: 60px;
+  
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+  background-color: white;
+  
+
+}
+
+
+.posting {
+
+  padding-top: 40px;
+
+}
+
+html{
+margin: 0;
+width: 100%;
+height: auto;
+display: block;
+
+}
+
+/* Change the white to any color ;) */
+#kembali {
+
+margin-right:11px;
+
+}
+
+#titleDaftar {
+
+
+}
+
+.page-header h1 {
+      font-size: 3em
+}
+
+table th{
+
+  
+    text-align: center;
+   
+
+
+}
+
+table.jadi-vertical > tbody > tr > td {
+     
+ 
+     vertical-align: middle;
+
+}
+
+span.bigStat {
+    border-radius: 1px;
+    padding: .7em .8em;
+
+
+}
+
+
+#warnaTr{
+
+  background-color: #90A4AE;
+
+
+}
+
+
+.coba1{
+  background-color:black;
+}
+
+
+.coba2{
+  background-color:yellow;
+}
+
+.bs-component {
+    position: relative;
+}
+
+
+/*
+.headerTable{
+
+  text-align: center;
+
+}*/
