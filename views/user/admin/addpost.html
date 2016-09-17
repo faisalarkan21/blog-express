@@ -1,23 +1,33 @@
+ {{>header}}
 
 
-{{>header}}
+<div class="page-header">
+
+  <h1>Edit Posting!</h1>
 
 
-<link href="https://cdn.quilljs.com/1.0.3/quill.snow.css" rel="stylesheet">
-
-<!-- Create the editor container -->
-<div id="editor">
-  <p>Hello World!</p>
-  <p>Some initial <strong>bold</strong> text</p>
-  <p><br></p>
 </div>
 
-<!-- Include the Quill library -->
+<div class="row">
+
+  <div class="panelEdit col-md-6 col-md-offset-2">
+
+
+    <div id="editor">
+      <p>Hello World!</p>
+      <p>Some initial <strong>bold</strong> text</p>
+     
+    </div>
+
+
+  </div>
+
+
+
+</div>
 
 
 {{>footer}}
- 
-  
 
 <!-- Initialize Quill editor -->
 <script type="text/javascript">
@@ -25,5 +35,3 @@
     theme: 'snow'
   });
 </script>
-
-
