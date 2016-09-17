@@ -212,6 +212,34 @@ exports.deleteUser = function (req,res){
 
 }
 
+
+exports.update = function (req, res){
+
+    var updateSatu = {
+
+        name: req.body.nama,
+        email: req.body.email,
+        admin: req.body.admin
+
+    }
+
+
+    akun.findOneAndUpdate({ userId: req.params.id }, updateSatu, function (err, user) {
+
+
+        if (err) throw err;
+
+        console.log("Berhasil");
+
+
+
+    });
+
+    res.redirect('/admin/dashboard');
+
+
+}
+
 exports.keluar = function (req, res) {
 
 

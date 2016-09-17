@@ -164,7 +164,7 @@ app.get('/keluar', users.keluar);
 app.get('/admin/user/:id',pengamananAdmin, users.user);
 app.post('/mendaftar', users.mendaftar);
 // app.get('/admin/dashboard',pengamananAdmin , users.listSemua);
-// app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update)
+app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update)
 app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);
 
 
