@@ -50,11 +50,24 @@
                                         <div>
                                             <div class="checkbox">
                                                 <label>                                   
+                                                    
+                                                    {{#if data.admin}}
+
+                                        <input type="checkbox" name="admin" id="checkboxAdmin" name="check" checked >      
+
+                                         <label for="checkboxAdmin" id='isAdmin'>  Status Admin </label>
+
+                                                    {{else}}
+
+                                            <input type="checkbox" name="admin" id="checkboxAdmin" name="check"  >      
+
+                                            <label for="checkboxAdmin" id='isAdmin'> Bukan Admin  </label>
+
+
+                                                    {{/if}}
 
                                                                                               
-                                         <input type="checkbox" name="admin" id="checkboxAdmin" name="check" {{cekAdmin}} >      
-
-                                         <label for="checkboxAdmin" id='isAdmin'>  <%= keterangan %>  </label>
+                                      
                                                 </label>
                                             </div>
                                         </div>

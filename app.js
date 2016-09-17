@@ -156,16 +156,16 @@ app.get('/', routes.index);
 app.get('/login',udahmasuk, users.login);
 app.post('/login', users.membuktikan);
 app.get('/profile', pengamananUser, users.profile);
-app.get('/dashboard',pengamananAdmin ,users.dashboard);
+app.get('/admin/dashboard',pengamananAdmin ,users.dashboard);
 
 app.get('/keluar', users.keluar);
 // app.get('/admin',pengamananAdmin, users.admin);
 // // app.get('/users', user.users);
-app.get('/user/:id',pengamananAdmin, users.user);
+app.get('/admin/user/:id',pengamananAdmin, users.user);
 app.post('/mendaftar', users.mendaftar);
 // app.get('/admin/dashboard',pengamananAdmin , users.listSemua);
 // app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update)
-// app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);
+app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);
 
 
 

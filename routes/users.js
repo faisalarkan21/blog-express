@@ -87,7 +87,7 @@ exports.membuktikan = function (req, res) {
         //test
         console.log(req.session);
 
-        res.redirect('dashboard');
+        res.redirect('admin/dashboard');
 
     });
     // console.log(akun);
@@ -194,6 +194,23 @@ exports.user = function (req, res) {
 
 
 };
+
+exports.deleteUser = function (req,res){
+
+ akun.findOneAndRemove({ userId: req.params.id }, function (err, user) {
+
+
+        if (err) throw err;
+
+        console.log("Berhasil");
+
+
+
+    });
+
+    res.redirect('/admin/dashboard');
+
+}
 
 exports.keluar = function (req, res) {
 
