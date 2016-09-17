@@ -1,0 +1,29 @@
+
+
+{{>header}}
+
+
+<link href="https://cdn.quilljs.com/1.0.3/quill.snow.css" rel="stylesheet">
+
+<!-- Create the editor container -->
+<div id="editor">
+  <p>Hello World!</p>
+  <p>Some initial <strong>bold</strong> text</p>
+  <p><br></p>
+</div>
+
+<!-- Include the Quill library -->
+
+
+{{>footer}}
+ 
+  
+
+<!-- Initialize Quill editor -->
+<script type="text/javascript">
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+</script>
+
+

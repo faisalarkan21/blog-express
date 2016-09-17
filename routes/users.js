@@ -240,6 +240,15 @@ exports.update = function (req, res){
 
 }
 
+exports.addPost = function (req, res){
+
+
+    res.render ('user/admin/addpost');
+
+
+
+}
+
 exports.keluar = function (req, res) {
 
 

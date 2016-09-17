@@ -15,37 +15,11 @@
 	<link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.min.css">
 
 
+
 	<link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap-material-design.min.css">
 	<link rel="stylesheet" href="/stylesheets/bootstrap/ripples.min.css">
+  
 
-
-
-
-	<script type="text/javascript" src="/javascripts/jquery/jquery.min.js"></script>
-
-	<script src="/javascripts/angular/angular.min.js"></script>
-
-
-	<script type="text/javascript" src="/javascripts/bootstrap/ripples.min.js"></script>
-	<script type="text/javascript" src="/javascripts/bootstrap/material.min.js"></script>
-	<script type="text/javascript" src="/javascripts/bootstrap/bootstrap.min.js"></script>
-
-
-
-	<script>
-	
-	$( document ).ready(function(){
-    $(function() 
-    {
-        $.material.init();
-    });
-});
-
-
-
-
-
-</script>
 
 </head>
 
@@ -61,13 +35,13 @@
 
         <div class="navbar-header">
 
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         
         </button>
-          <a class="navbar-brand" href="#">Website Curhat           
+          <a class="navbar-brand" href="/">Website Curhat           
         <div class="ripple-container">            
           </div>         
           </a>
@@ -111,8 +85,8 @@
 {{#if session.admin}}
   
 
-  <a href="admin/dashboard">Dasboard Admin</a>
-
+  <a href="/admin/dashboard">Dasboard Admin</a>
+ 
 {{else if session.namaSession}}
 
 
