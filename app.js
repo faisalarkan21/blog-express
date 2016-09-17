@@ -169,7 +169,7 @@ app.get('/admin/user/:id',pengamananAdmin, users.user);
 app.post('/mendaftar', users.mendaftar);
 app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update)
 app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);
-
+app.post('/admin/posting',pengamananAdmin, users.posting )
 
 
 

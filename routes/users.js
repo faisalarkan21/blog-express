@@ -249,6 +249,12 @@ exports.addPost = function (req, res){
 
 }
 
+
+exports.posting = function (req,res){
+
+    
+}
+
 exports.keluar = function (req, res) {
 
 
