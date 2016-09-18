@@ -5,20 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs  = require('express-handlebars');
-var mongoose = require('mongoose');
 var assert = require('assert');
 var session = require('express-session');
+
 var routes = require('./routes/index');
 var users = require('./routes/users')
 
-
-
-
 var app = express()
 
-
-
-
+// helper handlebars
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
     
@@ -75,7 +70,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/quill', express.static(__dirname+'/node_modules/quill/dist/'));
+app.use('/tinymce', express.static(__dirname+'/node_modules/tinymce/'));
 app.use('/material', express.static(__dirname+'/node_modules/bootstrap-material-design/dist/'));
 app.use('/bootstrap', express.static(__dirname+'/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname+'/node_modules/jquery/dist/'));
@@ -94,6 +89,10 @@ app.use(function(req,res,next){
     res.locals.session = req.session;
     next();
 });
+
+
+
+
 
 
 /*
@@ -155,21 +154,29 @@ var pengamananAdmin = function (req, res, next) {
 
 
 
-app.get('/daftar', users.daftar);
+/*
+    Untuk halaman depaan + posting
+*/
 app.get('/', routes.index);
+app.post('/admin/posting',pengamananAdmin, routes.posting );
+
+
+/*
+    Untuk kepeluan user 
+*/
+
 app.get('/login',udahmasuk, users.login);
 app.post('/login', users.membuktikan);
 app.get('/profile', pengamananUser, users.profile);
 app.get('/admin/dashboard',pengamananAdmin ,users.dashboard);
-
+app.get('/daftar', users.daftar);
 app.get('/keluar', users.keluar);
 app.get('/admin/masukanpost', users.addPost);
-
 app.get('/admin/user/:id',pengamananAdmin, users.user);
 app.post('/mendaftar', users.mendaftar);
-app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update)
+app.post('/admin/dashboard/update/:id',pengamananAdmin , users.update);
 app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);
-app.post('/admin/posting',pengamananAdmin, users.posting )
+
 
 
 

@@ -3,13 +3,13 @@
 /*
   Instalasi Mongo!
 */
-var mongo = require('mongoose');
-var autoincrement = require('mongoose-auto-increment');
 
-alamatDb = 'mongodb://localhost/node-login';
+var mongo = require('./config/mongo-config');
+var autoincrementUser = require('mongoose-auto-increment');
 
-autoincrement.initialize(mongo.connect(alamatDb));
 
+
+autoincrementUser.initialize(mongo);
 
 var skema = new mongo.Schema({
 
@@ -20,7 +20,7 @@ var skema = new mongo.Schema({
     admin: Boolean
 });
 
-skema.plugin(autoincrement.plugin, {
+skema.plugin(autoincrementUser.plugin, {
 
     model: 'accounts',
     field: 'userId',
@@ -30,10 +30,6 @@ skema.plugin(autoincrement.plugin, {
 });
 
 var akun = mongo.model('accounts', skema);
-
-
-
-
 
 /*
   Exports Alamat
@@ -153,7 +149,7 @@ exports.mendaftar = function (req, res) {
         password: req.body.pass,
         admin: false
 
-    })
+    });
 
 
     insertSatu.save(function (err) {
@@ -250,10 +246,6 @@ exports.addPost = function (req, res){
 }
 
 
-exports.posting = function (req,res){
-
-    
-}
 
 exports.keluar = function (req, res) {
 

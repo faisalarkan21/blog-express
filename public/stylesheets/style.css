@@ -9,6 +9,18 @@ body {
 }
 
 
+#editor{
+
+  height: 500px;
+  width: 100%;
+
+
+}
+
+textarea {
+    resize: none;
+}
+
 .posting {
 
   padding-top: 40px;

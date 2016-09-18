@@ -15,7 +15,7 @@
 
     <div class="well bs-component col-md-8 col-md-offset-1">
 
-      <form method="post" action="/admin/posting">
+      <form method="post" action="/admin/posting" id='isiPosting'>
 
 
         <div class="form-group">
@@ -23,7 +23,7 @@
           <label for="">Judul Posting</label>
           <br>
           <div>
-            <input class="form-control" type="" name="" value="">
+            <input class="form-control" type="" name="judul" value="">
 
           </div>
 
@@ -32,16 +32,22 @@
 
 
         <div id="editor">
-          <p>Hello World!</p>
-          <p>Some initial <strong>bold</strong> text</p>
+
+            <textarea name="coba" id="posting"></textarea>
 
         </div>
 
+       
+
+
+
+
         <div class="form-group text-right">
-          <button class="btn btn-raised btn-info" type="submit">Masukan Artikel</button>          
+          <button class="btn btn-raised btn-info" type="submit">Masukan Artikel</button>
         </div>
 
       </form>
+
 
 
     </div>
@@ -54,10 +60,21 @@
 {{>footer}}
 
 <!-- Initialize Quill editor -->
-<script type="text/javascript">
-  var quill = new Quill('#editor', {
+<script>
+ var quill = new Quill('#editor', {
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['image', 'code-block']
+    ]
+  },
+  placeholder: 'Compose an epic...',
+  theme: 'snow' // or 'bubble'
+});
 
-    placeholder:"tulis artikel lau! _faisal arkan",
-    theme: 'snow'
-  });
+
+
+         
+
 </script>
