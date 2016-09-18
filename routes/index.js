@@ -39,8 +39,13 @@ var postArtikel = mongo.model('artikel', skema);
 exports.index = function (req, res,next) {
 
 
+    postArtikel.find({}, function (err,artikel){
+
+        res.render('index',{data:artikel});
+
+
+    });
  
-  res.render('index');
 
 };
 
@@ -68,9 +73,4 @@ exports.posting = function (req,res){
 
 }
 
-
-exports.semuaArtikel = function (req,res){
-
-    
-}
 
