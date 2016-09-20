@@ -54,7 +54,7 @@ exports.posting = function (req,res){
 	  var insertArtikel = new postArtikel({
 
         judul: req.body.judul,
-        artikel: req.body.coba,      
+        artikel: req.body.posting,      
         setuju: true
 
     });

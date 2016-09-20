@@ -247,6 +247,7 @@ exports.addPost = function (req, res){
 
 
 
+
 exports.keluar = function (req, res) {
 
 
@@ -257,3 +258,22 @@ exports.keluar = function (req, res) {
 
 
 };
+
+
+/// untuk dev
+exports.cobaGet = function (req,res){
+
+
+    res.render('dev');    
+
+};
+
+exports.cobaPost = function (req,res){
+
+
+    var obj = {};
+	console.log('body: ' + JSON.stringify(req.body));
+	res.send(req.body);    
+
+};
+

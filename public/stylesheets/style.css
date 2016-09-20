@@ -22,10 +22,21 @@ textarea {
 }
 
 
+.editor{
 
+
+
+
+}
 .posting {
 
   padding-top: 40px;
+
+}
+
+#tiny{
+
+  height: 300px;
 
 }
 

@@ -154,6 +154,7 @@ var pengamananAdmin = function (req, res, next) {
 
 
 
+
 /*
     Untuk halaman depaan + posting
 */
@@ -179,7 +180,9 @@ app.get('/admin/dashboard/detele/:id', pengamananAdmin, users.deleteUser);
 
 
 
-
+//dev 
+app.get ('/dev', users.cobaGet);
+app.post ('/dev', users.cobaPost);
 
 
 

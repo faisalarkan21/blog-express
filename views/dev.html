@@ -1,0 +1,95 @@
+ {{>header}}
+
+<h1> For testing only </h1>
+
+
+
+<div class="col-md-5 col-md-offset-2">
+
+    <form method="POST" id="form-coba">
+
+        <div class="form-group">
+
+            <input class="form-control" type="" name="nama">
+
+        </div>
+
+        <div class="form-group">
+
+            <input class="form-control" name="email">
+
+        </div>
+
+
+
+
+
+    </form>
+    <button id="masuk" type="submit">coba</button>
+
+
+</div>
+
+
+
+{{>footer}}
+
+
+
+<script>
+
+
+
+$(document).on("click","#masuk",function(e) {
+    // alert("click bound to document listening for #test-element");
+
+     
+                    e.preventDefault();
+                    console.log('select_link clicked');
+                    
+                     /*$.ajax({
+                        dataType: 'jsonp',
+                        data: "data=yeah",						
+                        jsonp: 'callback',
+                        url: 'http://localhost:3000/endpoint?callback=?',						
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });*/
+					// var data = {};
+					// data.title = "title";
+					// data.message = "message";
+
+                    //  var coba = tinyMCE.activeEditor.getContent({format : 'text'});
+
+			  var formData = {
+            'name'              : $('input[name=nama]').val(),
+            'email'             : $('input[name=email]').val(),
+       
+                };		
+                    
+					$.ajax({
+						type: 'POST',
+						data: JSON.stringify(formData),
+				        contentType: 'application/json',
+                        url: 'http://127.0.0.1:3000/dev',				
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                    });
+					/*$.ajax('http://localhost:3000/endpoint', {
+					        type: 'POST',
+					        data: JSON.stringify(data),
+					        contentType: 'application/json',
+					        success: function() { console.log('success');},
+					        error  : function() { console.log('error');}
+					});*/
+                });			
+
+
+
+
+
+</script>
