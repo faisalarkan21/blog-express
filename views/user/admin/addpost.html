@@ -31,7 +31,7 @@
 
 
 
-        <div id="editor">
+        <div  id="editor">
 
             <textarea name="coba" id="tiny"></textarea>
 
@@ -41,14 +41,14 @@
 
 
 
-  <button id="masuk" class="btn btn-raised btn-info" type="submit">Masukan Artikel</button>
+
         <div class="form-group text-right">
-       
+         <button id="masuk" class="btn btn-raised btn-info" type="submit">Masukan Artikel</button>
         </div>
 
       </form>
  
-<button >Get content</button>
+
 
     </div>
 
@@ -61,6 +61,7 @@
 
 
 {{>footer}}
+
 
 
 
@@ -89,14 +90,14 @@ $(document).on("click","#masuk",function(e) {
 					// data.title = "title";
 					// data.message = "message";
 
-                     var coba = tinyMCE.activeEditor.getContent({format : 'text'});
+                      var coba = tinyMCE.activeEditor.getContent({format : 'raw'});
 
-			  var formData = {
-            'judul'              : $('input[name=judul]').val(),       
-            'posting'           : coba
-            };		
-                    
-					$.ajax({
+                      var formData = {
+                        'judul'              : $('input[name=judul]').val(),       
+                        'posting'           : coba
+                        };		
+                                
+                       $.ajax({
 						            type: 'POST',
 					              data: JSON.stringify(formData),
 				                contentType: 'application/json',

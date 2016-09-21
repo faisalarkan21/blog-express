@@ -1,5 +1,8 @@
  {{> header }}
 
+
+
+
 <div class="posting col-md-6 col-md-offset-1">
     {{#each data}}
     <div id="jarak">
@@ -7,13 +10,13 @@
             <div class="panel-heading">
 
 
-                <h3 class="panel-title">{{this.judul}}</h3>
+                <h3 id="judul" class="panel-title">{{this.judul}}</h3>
 
             </div>
 
-            <div class="panel-body">
+            <div id="artikel" class="panel-body">
 
-                {{this.artikel}}
+                {{{this.artikel}}}
                 
             </div>
 
@@ -21,14 +24,16 @@
 
         {{/each}}
 
-
-
-
     </div>
 
-
-</div>
 
 
 
 {{>footer}}
+<script>
+$(document).ready(function(){
+   
+        $("#artikel").html("Hello <b>world!</b>");
+    
+});
+</script>

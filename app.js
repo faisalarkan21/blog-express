@@ -7,9 +7,16 @@ var bodyParser = require('body-parser');
 var exphbs  = require('express-handlebars');
 var assert = require('assert');
 var session = require('express-session');
-
+var fs       = require('fs');
+var http     = require('http');
+var  util     = require('util');
 var routes = require('./routes/index');
 var users = require('./routes/users')
+var multer = require('multer');
+var handlebars = require("handlebars");
+
+
+var upload = multer({ dest: './public/upload' })
 
 var app = express()
 
@@ -35,11 +42,12 @@ var hbs = exphbs.create({
         
         bar: function () { return 'BAR!'; },
         tambahSatu: function(angka) {return angka+1}
-   
+        
   
 
  }
 });
+
 
 
 
@@ -74,6 +82,7 @@ app.use('/tinymce', express.static(__dirname+'/node_modules/tinymce/'));
 app.use('/material', express.static(__dirname+'/node_modules/bootstrap-material-design/dist/'));
 app.use('/bootstrap', express.static(__dirname+'/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname+'/node_modules/jquery/dist/'));
+app.use('/handlebars', express.static(__dirname+'/node_modules/handlebars/dist/'));
 
 
 

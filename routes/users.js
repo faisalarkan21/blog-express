@@ -5,6 +5,7 @@
 */
 
 var mongo = require('./config/mongo-config');
+
 var autoincrementUser = require('mongoose-auto-increment');
 
 
@@ -270,10 +271,10 @@ exports.cobaGet = function (req,res){
 
 exports.cobaPost = function (req,res){
 
+    console.log(req.body);
+     console.log(req.pic);
 
-    var obj = {};
-	console.log('body: ' + JSON.stringify(req.body));
-	res.send(req.body);    
+     res.status(204).end();
 
 };
 

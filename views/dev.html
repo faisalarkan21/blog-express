@@ -1,95 +1,60 @@
- {{>header}}
-
-<h1> For testing only </h1>
-
-
-
-<div class="col-md-5 col-md-offset-2">
-
-    <form method="POST" id="form-coba">
-
-        <div class="form-group">
-
-            <input class="form-control" type="" name="nama">
-
-        </div>
-
-        <div class="form-group">
-
-            <input class="form-control" name="email">
-
-        </div>
-
-
-
-
-
-    </form>
-    <button id="masuk" type="submit">coba</button>
-
-
-</div>
-
-
-
-{{>footer}}
-
-
-
-<script>
-
-
-
-$(document).on("click","#masuk",function(e) {
-    // alert("click bound to document listening for #test-element");
-
-     
-                    e.preventDefault();
-                    console.log('select_link clicked');
-                    
-                     /*$.ajax({
-                        dataType: 'jsonp',
-                        data: "data=yeah",						
-                        jsonp: 'callback',
-                        url: 'http://localhost:3000/endpoint?callback=?',						
-                        success: function(data) {
-                            console.log('success');
-                            console.log(JSON.stringify(data));
-                        }
-                    });*/
-					// var data = {};
-					// data.title = "title";
-					// data.message = "message";
-
-                    //  var coba = tinyMCE.activeEditor.getContent({format : 'text'});
-
-			  var formData = {
-            'name'              : $('input[name=nama]').val(),
-            'email'             : $('input[name=email]').val(),
-       
-                };		
-                    
-					$.ajax({
-						type: 'POST',
-						data: JSON.stringify(formData),
-				        contentType: 'application/json',
-                        url: 'http://127.0.0.1:3000/dev',				
-                        success: function(data) {
-                            console.log('success');
-                            console.log(JSON.stringify(data));
-                        }
-                    });
-					/*$.ajax('http://localhost:3000/endpoint', {
-					        type: 'POST',
-					        data: JSON.stringify(data),
-					        contentType: 'application/json',
-					        success: function() { console.log('success');},
-					        error  : function() { console.log('error');}
-					});*/
-                });			
-
-
-
-
-
-</script>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>How to render html with Handlebars.js</title>
+  <!-- Load handlerbars.js  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <!-- Load Jquery from CDN  for easy DOM manipulations -->
+  <script src="http://code.jquery.com/jquery-latest.min.js"    type="text/javascript"></script>
+  <!-- Simple handlebars template for a blog post, inside {{variable}} are variables we can afect with JS objects-->
+  <script id="simple-template" type="text/x-handlebars-template">
+      <h1>{{title}}</h1>
+      <p>
+        {{entry}}
+      </p>
+  </script>
+  
+  <script type="text/javascript">
+    //wait for page to load
+    $(document).ready(function(){
+      // Extract the text from the template .html() is the jquery helper method for that
+      var raw_template = $('#simple-template').html();
+      // Compile that into an handlebars template
+      var template = Handlebars.compile(raw_template);
+      // Retrieve the placeHolder where the Posts will be displayed 
+      var placeHolder = $("#main");
+      // Create a context to render the template
+      var context = {"title": "First Post", "entry": "You can't stop me now!"};
+      // Generate the HTML for the template
+      var html = template(context);
+      // Render the posts into the page
+      placeHolder.append(html);
+      
+      // Add source information to output to better clarify the results
+      $("#raw").append($("<div>").text(raw_template).html());
+      $("#data").append(JSON.stringify(context,null,4));
+    });
+  </script>
+</head>
+  
+<body>
+  <!-- Insertion point for handlebars template -->
+  <table>
+    <tr>
+      <th>Template</th>
+      <th></th>
+      <th>Data</th>
+      <th></th>
+      <th>Output</th>
+    </tr>
+    <tr>
+      <td><pre id="raw"></pre></td>
+      <td style="font-size:60px; padding: 30px;">+</td>
+      <td><pre id="data"></pre></td>
+      <th style="font-size:60px; padding: 30px;">=</th>
+      <td><div id="main"></div></td>
+    </tr>
+  </table>
+</body> 
+</html>

@@ -15,6 +15,7 @@ var skema = new mongo.Schema({
     judul:String,
     artikel: String,
     date: {type:Date, default:Date.now},
+    gambar : Buffer,
     setuju: Boolean
 
 
