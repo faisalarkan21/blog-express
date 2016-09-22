@@ -41,8 +41,13 @@ var hbs = exphbs.create({
         },
         
         bar: function () { return 'BAR!'; },
-        tambahSatu: function(angka) {return angka+1}
-        
+        tambahSatu: function(angka) {return angka+1},
+        atas:function(){
+
+            return ""
+
+
+        }
   
 
  }
