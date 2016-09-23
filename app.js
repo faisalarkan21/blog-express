@@ -16,9 +16,14 @@ var multer = require('multer');
 var handlebars = require("handlebars");
 
 
+
 var upload = multer({ dest: './public/upload' })
 
 var app = express()
+
+
+
+
 
 // helper handlebars
 var hbs = exphbs.create({
@@ -88,6 +93,7 @@ app.use('/material', express.static(__dirname+'/node_modules/bootstrap-material-
 app.use('/bootstrap', express.static(__dirname+'/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(__dirname+'/node_modules/jquery/dist/'));
 app.use('/handlebars', express.static(__dirname+'/node_modules/handlebars/dist/'));
+app.use('/font-material', express.static(__dirname+'/node_modules/material-design-icons/iconfont/'));
 
 
 
@@ -156,6 +162,7 @@ var pengamananAdmin = function (req, res, next) {
 
      res.send("Engga dijinin gan!");
 };
+
 
 
 

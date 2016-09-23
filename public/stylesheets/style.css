@@ -5,9 +5,40 @@ body {
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   background-color: white;
   
+  
 
 }
 
+
+ @font-face { font-family: Cabin; src: url('/font/Cabin/Cabin-Regular.ttf'); } 
+
+
+
+form.daftar, h1.judul {
+
+ font-family: 'Cabin', sans-serif;
+
+}
+
+form.text-center {
+
+  
+
+
+}
+
+form.daftar {
+ 
+    margin: 0 auto;
+    width:100%  value of your choice which suits your alignment 
+
+}
+
+.login {
+
+height: 450px;
+
+}
 
 #editor{
 
