@@ -49,9 +49,7 @@ exports.users = function (req, res) {
 
 exports.login = function (req, res, next) {
 
-    res.render("user/login", {
-        makan: "anda belum masuk"
-    });
+    res.render("user/login");
 
 };
 
