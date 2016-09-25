@@ -36,20 +36,20 @@
 
 
       <div class="form-group text-center">
-        <h1 class="judul"> Login Akun</h1>
+        <h1 class="judul">     {{yeah}} Login Akun</h1>
 
 
       </div>
 
       <div class="col-md-11">
-        <form class="daftar text-center" action="/login" method="post">
+        <form class="daftar text-center" method="post">
 
 
 
 
           <div>
 
-            <div id="ketikEmail"  class="form-group">
+            <div id="ketikEmail" class="form-group">
 
               <div class="input-group">
                 <span class="input-group-addon">
@@ -63,13 +63,13 @@
 
             </div>
 
-            <div  id="ketikPass" class="form-group">
+            <div id="ketikPass" class="form-group">
 
-              <div  class="input-group">
+              <div class="input-group">
                 <span class="input-group-addon">
              <i class="material-icons">lock_outline</i>
              </span>
-                <input  class="form-control" name="password" placeholder="Masukan Password" type="password" value="">
+                <input class="form-control" name="password" placeholder="Masukan Password" type="password" value="">
               </div>
 
             </div>
@@ -77,9 +77,11 @@
             <div id="pesan" class="form-group">
               <a class=" btn btn-raised btn-info btn-md" href="#">Daftar</a>
               <a id="login" class="btn btn-raised btn-primary" type="submit">Masuk</a>
-              <label class="control-label" hidden id='error' for="inputError">Isi dengan benar.</label>
+              <label class="control-label" hidden id='error' for="inputError">Isi data dengan benar.</label> {{pesanError}}
+
             </div>
 
+          
 
 
 
@@ -104,87 +106,93 @@
 {{>footer}}
 
 <script>
-  
-$(document).on("click","#login", function(e){
+  // buat input change klik id login
+
+  $(document).on("click", "#login", function(e) {
 
 
-  e.preventDefault();
-  console.log('select_link clicked');
+    e.preventDefault();
+    console.log('select_link clicked');
 
-  dataEmail = $('input[name=email]').val();
-  dataPass = $('input[name=password]').val();
-    
+    dataEmail = $('input[name=email]').val();
+    dataPass = $('input[name=password]').val();
 
-   if(($.trim(dataEmail) == '') &&($.trim(dataPass) == '')){
 
-     $('#ketikEmail').addClass('has-error is-empty');
-    
+    if (($.trim(dataEmail) == '') && ($.trim(dataPass) == '')) {
+
+      $('#ketikEmail').addClass('has-error is-empty');
+
       $('#ketikPass').addClass('has-error is-empty');
 
-       $('#pesan').addClass('has-error is-empty');
-    
-       $('label').show();
-   
-
-   }else if (($.trim(dataPass) == '') ){
-       $('#ketikPass').addClass('has-error is-empty');
-    
-        $('#pesan').addClass('has-error is-empty');
+      $('#pesan').addClass('has-error is-empty');
 
       $('label').show();
-   
-  
-  }else if (($.trim(dataEmail) == '' ) ){
-  
-   
-     $('#ketikEmail').addClass('has-error is-empty');
-     $('#pesan').addClass('has-error is-empty');
-       $('label').show();
-   
 
-  }
 
-  $.ajax({
+    } else if (($.trim(dataPass) == '')) {
+      $('#ketikPass').addClass('has-error is-empty');
 
-    type:'POST',
-    url: $( "form" ).attr( 'action' ),
-    data: $( "form" ).serialize(),
-    success: function (res){
-       window.location.href = '/admin/dashboard';
+      $('#pesan').addClass('has-error is-empty');
+
+      $('label').show();
+
+
+    } else if (($.trim(dataEmail) == '')) {
+
+
+      $('#ketikEmail').addClass('has-error is-empty');
+      $('#pesan').addClass('has-error is-empty');
+  $('label').show();
+
+
     }
-   
 
+    $.ajax({
+      //disini
+        
+      type: 'POST',     
+      data: $("form").serialize(),
+      dataType: 'html',
+      url: 'http://127.0.0.1:3000/login'
+      // success: function(res) {
+       
+      //   if (res == true){
+
+      //         alert('bener');
+
+      //   }else{
+
+      //        console.log(res)
+      //        alert('salah');
+
+      //   }
+           
+      //   },
+
+      // error: function(res){
+    
+      //     alert('failure');
+      
+      // }
+
+
+
+    });
   });
 
-  
- 
-   
-  
-});
-  
+  // buat input change keyboard
 
+  $("input").on('input', function(e) {
 
- 
+    dataEmail = $('input[name=email]').val();
+    dataPass = $('input[name=password]').val();
 
+    // console.log(dataEmail);
 
+    if (($.trim(dataEmail)) && ($.trim(dataPass))) {
 
+      $('label').hide();
 
- $("input").on('input',function(e){
-
-
-  dataEmail = $('input[name=email]').val();
-  dataPass = $('input[name=password]').val();
-
-
-  if(($.trim(dataEmail)) && ($.trim(dataPass))){
-
-    $('label').hide();
-
-   }
-
-
-  
-
+    }
   });
-
 </script>

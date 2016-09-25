@@ -1,5 +1,3 @@
-
-
 /*
   Instalasi Mongo!
 */
@@ -17,7 +15,10 @@ var skema = new mongo.Schema({
     name: String,
     email: String,
     password: String,
-    date: { type: Date, default: Date.now },
+    date: {
+        type: Date,
+        default: Date.now
+    },
     admin: Boolean
 });
 
@@ -48,9 +49,21 @@ exports.users = function (req, res) {
 
 
 exports.login = function (req, res, next) {
+  if (req.session.admin == true) {
 
-    res.render("user/login");
+        res.redirect("/admin");
 
+    } else if (req.session.admin == false && req.session.namaSession) {
+
+        res.redirect("/dashboard");
+
+    } else {
+
+        res.render('user/login', {
+            yeah: "belum login"
+        });
+
+    };
 };
 
 
@@ -58,12 +71,17 @@ exports.membuktikan = function (req, res) {
 
 
 
-    akun.findOne({ email: req.body.email, password: req.body.password }, function (err, data) {
+    akun.findOne({
+        email: req.body.email,
+        password: req.body.password
+    }, function (err, data) {
 
-        if (err) return console.log(err);
 
+
+        //disini
         if (!data)
-            return console.log("data tidak sama");
+            return res.render('user/login');
+
 
         if (data.admin == false) {
 
@@ -91,9 +109,11 @@ exports.membuktikan = function (req, res) {
 
 exports.profile = function (req, res, next) {
 
- 
 
-    res.render('user/profile', { nama: req.session.namaSession });
+
+    res.render('user/profile', {
+        nama: req.session.namaSession
+    });
 
 };
 
@@ -101,7 +121,7 @@ exports.profile = function (req, res, next) {
 
 exports.dashboard = function (req, res) {
 
-       akun.find({}, function (err, users) {
+    akun.find({}, function (err, users) {
 
         // var userMap = {};
 
@@ -115,12 +135,14 @@ exports.dashboard = function (req, res) {
 
         //    res.render('list', users);
 
-        res.render('user/admin/dashboard', { data: users });
+        res.render('user/admin/dashboard', {
+            data: users
+        });
 
 
     })
 
- 
+
 
 
 };
@@ -165,20 +187,21 @@ exports.mendaftar = function (req, res) {
 
 
 
-
 exports.user = function (req, res) {
 
-    akun.findOne({ userId: req.params.id }, function (err, user) {
+    akun.findOne({
+        userId: req.params.id
+    }, function (err, user) {
 
         if (!err) {
             // res.json(data);
 
 
-            res.render('user/admin/detail', { data: user })
+            res.render('user/admin/detail', {
+                data: user
+            })
 
-        }
-
-        else {
+        } else {
 
             console.log(err);
 
@@ -190,9 +213,11 @@ exports.user = function (req, res) {
 
 };
 
-exports.deleteUser = function (req,res){
+exports.deleteUser = function (req, res) {
 
- akun.findOneAndRemove({ userId: req.params.id }, function (err, user) {
+    akun.findOneAndRemove({
+        userId: req.params.id
+    }, function (err, user) {
 
 
         if (err) throw err;
@@ -208,7 +233,7 @@ exports.deleteUser = function (req,res){
 }
 
 
-exports.update = function (req, res){
+exports.update = function (req, res) {
 
     var updateSatu = {
 
@@ -219,7 +244,9 @@ exports.update = function (req, res){
     }
 
 
-    akun.findOneAndUpdate({ userId: req.params.id }, updateSatu, function (err, user) {
+    akun.findOneAndUpdate({
+        userId: req.params.id
+    }, updateSatu, function (err, user) {
 
 
         if (err) throw err;
@@ -235,10 +262,10 @@ exports.update = function (req, res){
 
 }
 
-exports.addPost = function (req, res){
+exports.addPost = function (req, res) {
 
 
-    res.render ('user/admin/addpost');
+    res.render('user/admin/addpost');
 
 
 
@@ -251,7 +278,7 @@ exports.keluar = function (req, res) {
 
 
     req.session.destroy();
-   
+
 
     res.redirect('/');
 
@@ -260,19 +287,18 @@ exports.keluar = function (req, res) {
 
 
 /// untuk dev
-exports.cobaGet = function (req,res){
+exports.cobaGet = function (req, res) {
 
 
-    res.render('dev');    
+    res.render('dev');
 
 };
 
-exports.cobaPost = function (req,res){
+exports.cobaPost = function (req, res) {
 
     console.log(req.body);
-     console.log(req.pic);
+    console.log(req.pic);
 
-     res.status(204).end();
+    res.status(204).end();
 
 };
-

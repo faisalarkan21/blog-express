@@ -124,21 +124,21 @@ app.use(function(req,res,next){
 
 var udahmasuk = function (req, res, next) {
 
-    if (req.session.admin == true) {
+    // if (req.session.admin == true) {
 
-        res.redirect("/admin");
+    //     res.redirect("/admin");
 
-    } else if (req.session.admin == false && req.session.namaSession) {
+    // } else if (req.session.admin == false && req.session.namaSession) {
 
-        res.redirect("/dashboard");
+    //     res.redirect("/dashboard");
 
-    } else {
+    // } else {
 
-        res.render('user/login', {
-            makan: "belum login"
-        });
+    //     res.render('user/login', {
+    //         yeah: "belum login"
+    //     });
 
-    };
+    // };
 };
 
 
@@ -187,7 +187,7 @@ app.post('/admin/posting',pengamananAdmin, routes.posting );
     Untuk kepeluan user 
 */
 
-app.get('/login',udahmasuk, users.login);
+app.get('/login', users.login);
 app.post('/login', users.membuktikan);
 app.get('/profile', pengamananUser, users.profile);
 app.get('/admin/dashboard',pengamananAdmin ,users.dashboard);
